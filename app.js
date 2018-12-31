@@ -41,6 +41,43 @@ var Anna = (function (_super) {
 }(Person));
 var anna = new Anna("randomName", "myUsername");
 console.log(anna);
+var Animal = (function () {
+    function Animal(sound) {
+        this.sound = sound;
+    }
+    Animal.prototype.makeSound = function () {
+        console.log(this.sound);
+    };
+    Animal.prototype.getToMakeSoundMethod = function () {
+        this.makeSound();
+    };
+    return Animal;
+}());
+var animal = new Animal('woof, woof!');
+animal.getToMakeSoundMethod();
+var Cat = (function (_super) {
+    __extends(Cat, _super);
+    function Cat(name) {
+        var _this = _super.call(this, "meow!") || this;
+        _this.name = name;
+        return _this;
+    }
+    return Cat;
+}(Animal));
+var smokey = new Cat('Fluffy Cat');
+console.log(smokey.name);
+console.log(smokey.sound);
+var myCat = (function (_super) {
+    __extends(myCat, _super);
+    function myCat(favouritePlace) {
+        var _this = _super.call(this, "Coco") || this;
+        _this.favouritePlace = favouritePlace;
+        return _this;
+    }
+    return myCat;
+}(Cat));
+var myOwnCat = new myCat("sofa");
+console.log(myOwnCat);
 //GETTERS AND SETTERS
 var Plant = (function () {
     function Plant() {

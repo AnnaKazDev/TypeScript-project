@@ -36,6 +36,40 @@ const anna = new Anna("randomName", "myUsername");
 console.log(anna);
 
 
+class Animal {
+    constructor(public sound: string) {
+    }
+
+    protected makeSound(): void {
+        console.log(this.sound);
+    }
+
+    getToMakeSoundMethod() {
+        this.makeSound()
+    }
+}
+
+let animal = new Animal('woof, woof!');
+animal.getToMakeSoundMethod();
+
+class Cat extends Animal {
+    constructor(public name: string) {
+        super("meow!")
+    }
+}
+let smokey: Cat = new Cat('Fluffy Cat');
+console.log(smokey.name);
+console.log(smokey.sound);
+
+class myCat extends Cat {
+    constructor(public favouritePlace: string) {
+        super("Coco")
+    }
+}
+let myOwnCat = new myCat("sofa");
+console.log(myOwnCat);
+
+
 //GETTERS AND SETTERS
 class Plant {
     private _species: string = "Default plant";
@@ -121,7 +155,7 @@ class ITProject extends Project {
     }
 }
 
-let newProject:ITProject = new ITProject;
+let newProject: ITProject = new ITProject;
 newProject.calcBudget(44);
 console.log(newProject);
 newProject.changeName("HR Project");
