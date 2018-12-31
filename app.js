@@ -81,6 +81,28 @@ var Helpers = (function () {
 Helpers.PI = 3.13;
 console.log(2 * Helpers.PI);
 console.log(Helpers.calcCircumstance(8));
+var Dog = (function () {
+    function Dog(name) {
+        this.name = name;
+        this.state = 'happy';
+        this.id = ++Dog.id;
+    }
+    Dog.printBark = function (name, state, id) {
+        return "Woof! Woof! I am " + name + ". And I am " + state + ". My id is " + id;
+    };
+    Dog.prototype.bark = function () {
+        var bark = Dog.printBark(this.name, this.state, this.id);
+        return bark;
+    };
+    return Dog;
+}());
+Dog.id = 0;
+var fluffy = new Dog('fluffy');
+console.log(fluffy.bark());
+var barky = new Dog('barky');
+console.log(barky.bark());
+var ricky = new Dog('ricky');
+console.log(ricky.bark());
 //ABSTRACT CLASSES - they are to be inherited from, blueprints
 //this class needs to be extended
 var Project = (function () {
@@ -108,4 +130,5 @@ newProject.calcBudget(44);
 console.log(newProject);
 newProject.changeName("HR Project");
 console.log(newProject);
+//PRIVATE CONSTRUCTORS
 //# sourceMappingURL=app.js.map

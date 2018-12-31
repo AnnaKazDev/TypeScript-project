@@ -72,6 +72,35 @@ console.log(2 * Helpers.PI);
 console.log(Helpers.calcCircumstance(8));
 
 
+class Dog {
+    static id: number = 0;
+    id: number;
+    state: string = 'happy';
+
+    constructor(private name: string) {
+        this.id = ++Dog.id;
+    }
+
+    static printBark(name: string, state: string, id: number): string {
+        return "Woof! Woof! I am " + name + ". And I am " + state + ". My id is " + id;
+    }
+
+    bark(): string {
+        let bark: string = Dog.printBark(this.name, this.state, this.id);
+        return bark;
+    }
+}
+
+let fluffy: Dog = new Dog('fluffy');
+console.log(fluffy.bark());
+
+let barky: Dog = new Dog('barky');
+console.log(barky.bark());
+
+let ricky: Dog = new Dog('ricky');
+console.log(ricky.bark());
+
+
 //ABSTRACT CLASSES - they are to be inherited from, blueprints
 //this class needs to be extended
 abstract class Project {
@@ -92,8 +121,10 @@ class ITProject extends Project {
     }
 }
 
-let newProject = new ITProject;
+let newProject:ITProject = new ITProject;
 newProject.calcBudget(44);
 console.log(newProject);
 newProject.changeName("HR Project");
 console.log(newProject);
+
+//PRIVATE CONSTRUCTORS
