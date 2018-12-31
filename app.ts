@@ -161,4 +161,22 @@ console.log(newProject);
 newProject.changeName("HR Project");
 console.log(newProject);
 
-//PRIVATE CONSTRUCTORS
+//PRIVATE CONSTRUCTORS & READONLY
+class OnlyOne {
+    private static instance: OnlyOne;
+
+    private constructor(public readonly name: string) {
+    }
+
+    static getInstance() {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne('The OnlyOne');
+        }
+        return OnlyOne.instance;
+    }
+}
+
+//let wrong = new OnlyOne('The Only One');
+let right = OnlyOne.getInstance();
+console.log(right);
+//right.name = 'Something else'; // cannot override because it is readonly

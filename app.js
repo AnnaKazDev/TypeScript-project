@@ -167,5 +167,21 @@ newProject.calcBudget(44);
 console.log(newProject);
 newProject.changeName("HR Project");
 console.log(newProject);
-//PRIVATE CONSTRUCTORS
+//PRIVATE CONSTRUCTORS & READONLY
+var OnlyOne = (function () {
+    function OnlyOne(name) {
+        this.name = name;
+    }
+    OnlyOne.getInstance = function () {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne('The OnlyOne');
+        }
+        return OnlyOne.instance;
+    };
+    return OnlyOne;
+}());
+//let wrong = new OnlyOne('The Only One');
+var right = OnlyOne.getInstance();
+console.log(right);
+//right.name = 'Something else'; // cannot override because it is readonly
 //# sourceMappingURL=app.js.map
